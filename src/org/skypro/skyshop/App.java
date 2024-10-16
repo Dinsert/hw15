@@ -29,7 +29,6 @@ public class App {
         productBasket.printBasketContents();
         System.out.println(productBasket.getTotalBasketValue());
         System.out.println(productBasket.checkIfProductIsByBasket("Course Python"));
-
     }
 
 }
