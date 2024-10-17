@@ -18,4 +18,8 @@ public class Product {
         return costProduct;
     }
 
+    @Override
+    public String toString() {
+        return nameProduct + ": " + costProduct;
+    }
 }

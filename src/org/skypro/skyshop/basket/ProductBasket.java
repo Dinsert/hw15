@@ -12,10 +12,12 @@ public class ProductBasket {
         for (int i = 0; i < products.length; i++) {
             if (isNull(products[i])) {
                 products[i] = product;
-                return;
+                break;
+            }
+            if (i == products.length - 1) {
+                System.out.println("Невозможно добавить продукт");
             }
         }
-        System.out.println("Невозможно добавить продукт");
     }
 
     public int getTotalBasketValue() {
@@ -25,23 +27,19 @@ public class ProductBasket {
                 result += product.getCostProduct();
             }
         }
-
         return result;
     }
 
     public void printBasketContents() {
-        for (Product product : products) {
-            if (nonNull(product)) {
-                System.out.println(product.getNameProduct() + ": " + product.getCostProduct());
-            } else {
+        for (int i = 0; i < products.length; i++) {
+            if (isNull(products[0])) {
                 System.out.println("В корзине пусто");
                 break;
-            }
-        }
-        for (Product product : products) {
-            if (nonNull(product)) {
-                System.out.println("Итого: " + getTotalBasketValue());
-                return;
+            } else if (nonNull(products[i])) {
+                System.out.println(products[i]);
+                if (i == products.length - 1) {
+                    System.out.println("Итого: " + getTotalBasketValue());
+                }
             }
         }
     }
