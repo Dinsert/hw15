@@ -31,17 +31,26 @@ public class ProductBasket {
     }
 
     public void printBasketContents() {
-        for (int i = 0; i < products.length; i++) {
-            if (isNull(products[0])) {
+        for (Product product : products) {
+            if (nonNull(product)) {
+                System.out.println(product);
+            } else {
                 System.out.println("В корзине пусто");
-                break;
-            } else if (nonNull(products[i])) {
-                System.out.println(products[i]);
-                if (i == products.length - 1) {
-                    System.out.println("Итого: " + getTotalBasketValue());
-                }
+                return;
             }
         }
+        if (isProductByBasket()) {
+            System.out.println("Итого: " + getTotalBasketValue());
+        }
+    }
+
+    private boolean isProductByBasket() {
+        for (Product product : products) {
+            if (nonNull(product)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean checkIfProductIsByBasket(String string) {
