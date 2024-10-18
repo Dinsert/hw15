@@ -1,17 +1,19 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
 
     public static void main(String[] args) {
-        Product product1 = new Product("Course Java", 200_000);
-        Product product2 = new Product("Course C++", 250_000);
-        Product product3 = new Product("Course Python", 100_000);
-        Product product4 = new Product("Course Kotlin", 95_000);
-        Product product5 = new Product("Course С#", 175_000);
-        Product product6 = new Product("Course JavaScript", 400_000);
+        SimpleProduct product1 = new SimpleProduct("Course Java", 200_000);
+        DiscountedProduct product2 = new DiscountedProduct("Course C++", 250_000, 50);
+        SimpleProduct product3 = new SimpleProduct("Course Python", 100_000);
+        DiscountedProduct product4 = new DiscountedProduct("Course Kotlin", 95_000, 95);
+        FixPriceProduct product5 = new FixPriceProduct("Course С#");
+        SimpleProduct product6 = new SimpleProduct("Course JavaScript", 400_000);
 
         ProductBasket productBasket = new ProductBasket();
 
@@ -29,7 +31,6 @@ public class App {
         productBasket.printBasketContents();
         System.out.println(productBasket.getTotalBasketValue());
         System.out.println(productBasket.checkIfProductIsByBasket("Course Python"));
-
     }
 
 }
